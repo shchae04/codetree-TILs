@@ -5,12 +5,7 @@ public class Main {
         int b = 2;
         int c = 3;
 
-        int temp = a;
-        int temp2 = b;
-        int temp3 = c;
-        a = a+b+c;
-        b = temp + temp2 + c;
-        c = temp + temp2 + temp3;
+        a = b = c = a+b+c;
 
         System.out.println(a + " " + b + " " + c);
     }
