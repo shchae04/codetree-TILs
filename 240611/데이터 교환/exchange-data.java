@@ -5,13 +5,13 @@ public class Main {
         int b = 6;
         int c = 7;
 
-        int a_1 = c;
-        int b_1 = b;
-        int c_1 = a;
-        
+        int temp = a;
+        a = c;
+        c = b;
+        b = temp;
 
-        System.out.println(a_1);
-        System.out.println(c_1);
-        System.out.println(b_1);
+        System.out.println(a);
+        System.out.println(c);
+        System.out.println(b);
     }
 }
