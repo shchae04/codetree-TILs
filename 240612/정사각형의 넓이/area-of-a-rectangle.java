@@ -10,8 +10,10 @@ public class Main {
         if(a < 5){
             System.out.println(a*a);
             System.out.println("tiny");
-        } 
+        } else {
+            System.out.println(a*a);
+        }
 
-        System.out.println(a*a);
+        
     }
 }
