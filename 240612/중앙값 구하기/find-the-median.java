@@ -12,16 +12,17 @@ public class Main {
         b = sc.nextInt();
         c = sc.nextInt();
 
-        int p;
-        if(a > b && a > c){
-            if(b>c){
-                System.out.println(b);
-            } else if(b<c){
-                System.out.println(c);
-            }
+        int median;
+
+        if(a > b && a < c || a > c &&  a<b) {
+            median = a;
+        } else if ((b > a && b < c) || (b > c && b < a)) {
+            median = b;
         } else {
-            System.out.println(a);
+            median = c;
         }
+        System.out.println(median);
+        
          
     }
 }
