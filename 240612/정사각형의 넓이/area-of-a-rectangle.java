@@ -8,6 +8,7 @@ public class Main {
         int a = sc.nextInt();
 
         if(a < 5){
+            System.out.println(a*a);
             System.out.println("tiny");
         } 
 
