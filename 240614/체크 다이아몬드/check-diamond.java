@@ -6,23 +6,67 @@ public class Main {
         scanner.close();
 
         int size = 2 * n - 1;
-        char[][] diamond = new char[size][size];
+        
 
-        for (int i = 0; i < size; i++) {
-            for (int j = 0; j < size; j++) {
-                diamond[i][j] = ' ';
+        for(int i=0; i<n; i++){ //첫줄
+            for(int j=0; j< n - i - 1; j++){ //공백 삽입 
+                System.out.print(" "); //2번  
+                //0 -> 2
+                //1 -> 1
+                //2 -> 0                                 
+            } 
+            for(int j=0; j< i + 1; j++){
+                System.out.print("* ");
+                //0 -> 1번
+                //1 -> 2번
+                //3 -> 3번
             }
+            //  *
+            // * *
+            //* * *
+                        System.out.println();
+
         }
 
-        for (int i = 0; i < n; i++) {
-            for (int j = 0; j <= i; j++) {
-                diamond[i][n - 1 - i + 2 * j] = '*';
-                diamond[size - 1 - i][n - 1 - i + 2 * j] = '*';
+        for(int i = n-2; i>=0; i--){
+            for(int j=0; j<n-i-1; j++){
+                System.out.print(" ");
             }
+            for(int j=0; j<i+1; j++){
+                System.out.print("* ");
+            }
+            System.out.println();
         }
 
-        for (char[] row : diamond) {
-            System.out.println(new String(row));
-        }
+
+
+
+
+
+
+
+
+
+
+
+        
+
+        // 모양에 맞게 위쪽 별을 출력합니다.
+        // for(int i = 0; i < n; i++) { // i=0; i=1
+        //     for(int j = 0; j < n - i - 1; j++) //j=0,1 1
+        //         System.out.print(" ");
+        //     for(int j = 0; j < i + 1; j++) //*하나 찍음
+        //         System.out.print("* ");
+        //     System.out.println(); //개행 
+        // }
+
+        // 모양에 맞게 아래쪽 별을 출력합니다.
+        // for(int i = n-2; i >= 0; i--) {
+        //     for(int j = 0; j < n - i - 1; j++)
+        //         System.out.print(" ");
+        //     for(int j = 0; j < i + 1; j++)
+        //         System.out.print("* ");
+        //     System.out.println();
+        // }
     }
 }
