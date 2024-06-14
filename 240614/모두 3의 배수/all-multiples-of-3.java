@@ -11,14 +11,14 @@ public class Main {
 		int a = sc.nextInt();
 
         int[] arr = new int[5];
-        int cnt = 0;
+        boolean flag = true;
         for(int tt : arr){
-            if(tt % 3 == 0){
-                cnt++;
+            if(tt % 3 != 0){
+                flag = false;
             }
         }
 
-        if(cnt == 5){
+        if(flag){
             System.out.println(1);
         } else {
             System.out.println(0);
