@@ -24,7 +24,7 @@ public class Main {
             //  *
             // * *
             //* * *
-                        System.out.println();
+            System.out.println();
 
         }
 
@@ -36,6 +36,8 @@ public class Main {
                 System.out.print("* ");
             }
             System.out.println();
+            // * *
+            //  *
         }
 
 
