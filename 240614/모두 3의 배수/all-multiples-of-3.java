@@ -8,12 +8,14 @@ public class Main {
 		
 		Scanner sc = new Scanner(System.in);
 		
-		int a = sc.nextInt();
-
-        int[] arr = new int[5];
         boolean flag = true;
+        int[] arr = new int[5];
+        for (int i = 0; i < arr.length; i++) {
+            arr[i] = sc.nextInt();
+        }
+        
         for(int tt : arr){
-            if(tt % 3 != 0){
+            if(tt % 3!= 0){
                 flag = false;
             }
         }
