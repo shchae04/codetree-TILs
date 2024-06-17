@@ -18,6 +18,14 @@ public class Main {
             }
             System.out.println();
         }
+
+        // n칸의 정사각형에 i * j를 출력합니다.
+        // for(int i = 1; i <= a; i++) {
+        //     for(int j = 1; j <= b; j++) {
+        //         System.out.print((i * j) + " ");
+        //     }
+        //     System.out.println();
+        // }
     }
     //1 1.2.3.4.5
     //2 4 6 8 10
