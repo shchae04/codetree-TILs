@@ -10,10 +10,12 @@ public class Main {
             }
             System.out.println();
         }
-        //i=11 j=11 13 15 17 19
-        //i=13 j=13 15 17 19 21
-        //i=15 j=15 17 19 21 23
-        //i=17 
-        //i=19
+        // n칸의 정사각형에 올바른 숫자를 출력합니다.
+        // for(int i = 0; i < n; i++) {
+        //     for(int j = 0; j < n; j++) {
+        //         System.out.print((i * 2 + j * 2 + 11) + " ");
+        //     }
+        //     System.out.println();
+        // }
     }
 }
