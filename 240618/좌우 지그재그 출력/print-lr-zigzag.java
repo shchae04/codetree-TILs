@@ -23,6 +23,16 @@ public class Main {
             System.out.println();
         }
     }
+    // 좌우 지그재그로 출력합니다.
+        // for(int i = 0; i < n; i++) {
+        //     for(int j = 0; j < n; j++) {
+        //         if(i % 2 == 0)
+        //             System.out.print(((i * n) + j + 1) + " ");
+        //         else
+        //             System.out.print(((i * n) + n - j) + " ");
+        //     }
+        //     System.out.println();
+        // }
 }
 
 // i=0 1 2 3 4
