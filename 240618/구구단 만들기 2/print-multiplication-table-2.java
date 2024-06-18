@@ -21,4 +21,7 @@ public class Main {
 
         sc.close();
     }
+
+    //고정인 수를 바깥 for문
+    //움직이는 수를 안쪽 for문
 }
