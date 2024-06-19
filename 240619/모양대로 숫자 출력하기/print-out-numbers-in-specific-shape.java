@@ -15,5 +15,16 @@ public class Main {
             }
             System.out.println();
         }
+
+        // 숫자로 이루어진 삼각형을 출력합니다.
+        // for(int i = n; i >= 1; i--) {
+        //     for(int j = n; j >= 1; j--) {
+        //         if(j > i)
+        //             System.out.print("  ");
+        //         else
+        //             System.out.print(j + " ");
+        //     }
+        //     System.out.println();
+        // }
     }
 }
