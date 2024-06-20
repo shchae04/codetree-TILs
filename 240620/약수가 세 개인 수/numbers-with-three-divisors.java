@@ -13,7 +13,7 @@ public class Main {
 
             int k = 1; // 1 ~ 
             int cnt = 0; // 약수의 갯수 
-            while (k < i) {//start 가 아닐때까지만
+            while (k =< i) {//start 가 아닐때까지만 1 6
                 if (i % k == 0) { 
                     cnt++;
                 } 
