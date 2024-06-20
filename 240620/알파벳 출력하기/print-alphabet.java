@@ -12,7 +12,7 @@ public class Main {
             for(int j=0; j<i+1; j++){
                 System.out.print(cChar);
                 cChar++;
-                if(cChar > Z){
+                if(cChar > 'Z'){
                     cChar = 'A';
                 }
             }
