@@ -10,8 +10,7 @@ public class Main {
 
         for(int i=0; i<n; i++){
             
-            for(int k=0; k<i+1 ; k++){
-                if(k != 0 )
+            for(int k=0; k<i ; k++){
                 System.out.print("  ");
             }
 
