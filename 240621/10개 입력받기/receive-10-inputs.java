@@ -10,13 +10,15 @@ public class Main {
         
         for (int i = 0; i < 10; i++) {
             arr[i] = sc.nextInt();
-            sum+=arr[i];
             if (arr[i] == 0) {
                 break; 
             }
+            sum += arr[i];
             count++;
         }
-        System.out.printf("%d %.1f",sum, (double)(sum/count));
+        
+        avg = (double) sum / count;
+        System.out.printf("%d %.1f", sum, avg);
         
         sc.close(); 
     }
