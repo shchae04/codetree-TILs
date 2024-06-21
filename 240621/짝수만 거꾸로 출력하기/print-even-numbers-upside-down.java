@@ -22,4 +22,10 @@ public class Main {
         
         sc.close();
     }
+
+    // 입력받은 수들을 거꾸로 보면서 짝수인 값만 출력합니다.
+        // for(int i = n - 1; i >= 0; i--) {
+        //     if(arr[i] % 2 == 0)
+        //         System.out.print(arr[i] + " ");
+        // }
 }
