@@ -25,6 +25,6 @@ public class Main {
             }
         }
         avg = (double)oddSum/3;
-        System.out.println(sum + " " + avg);
+        System.out.printf("%d %.1f", sum, avg);
     }
 }
