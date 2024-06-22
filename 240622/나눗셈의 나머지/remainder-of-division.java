@@ -10,7 +10,7 @@ public class Main {
         int[] arrCount = new int[10];
         int i;
 
-        while (a > 0) {
+        while (a > 1) {
             i = a % b;
             arrCount[i]++;
 
