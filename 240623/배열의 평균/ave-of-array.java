@@ -18,7 +18,7 @@ public class Main {
             for(int j = 0; j < 4; j++) {
                 sum += arr[i][j];
             }
-            System.out.print((double) sum/4  + " ");
+            System.out.printf("%.1f ", (double)sum/4);
         }
         System.out.println();
 
@@ -28,17 +28,17 @@ public class Main {
             for(int j = 0; j < 2; j++) {
                 sum += arr[j][i];
             }
-            System.out.print((double) sum/2 + " ");
+            System.out.printf("%.1f ", (double)sum/2);
         }
         System.out.println();
 
         //전체 평균 출력
-        int sum =0;
+        int totalSum = 0;
         for(int i = 0; i < 2; i++) {
             for(int j = 0; j < 4; j++) {
-                sum += arr[i][j];
+                totalSum += arr[i][j];
             }
         }
-        System.out.println((double) sum/8);
+        System.out.printf("%.1f ", (double)totalSum/8);
     }
 }
