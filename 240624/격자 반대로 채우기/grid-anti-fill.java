@@ -7,14 +7,14 @@ public class Main {
         int[][] grid = new int[n][n];
 
         int num = 1;
-        for (int i = n - 1; i >= 0; i--) {
-            if ((n - 1 - i) % 2 == 0) {
-                for (int j = n - 1; j >= 0; j--) {
-                    grid[j][i] = num++;
+        for (int i = n - 1; i >= 0; i--) { //3 2 1 0
+            if ((n - 1 - i) % 2 == 0) { // 0 1 2 3
+                for (int j = n - 1; j >= 0; j--) { //3 2 1 0
+                    grid[j][i] = num++; //[3][3] [3][2] [3][1] [3][0] 위로 증가
                 }
             } else {
                 for (int j = 0; j < n; j++) {
-                    grid[j][i] = num++;
+                    grid[j][i] = num++; //[2][0] [2][1] [2][2] [2][3]  아래로 증가
                 }
             }
         }
