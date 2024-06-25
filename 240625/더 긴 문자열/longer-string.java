@@ -8,6 +8,8 @@ public class Main {
         String str1 = sc.next();
         if(str.length() > str1.length()){
             System.out.println(str +" "+ str.length());
+        } else  if(str.length() == str1.length()){
+            System.out.println("same");
         } else {
             System.out.println(str1 +" "+ str1.length());
         }
