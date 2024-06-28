@@ -9,11 +9,10 @@ public class Main {
 
         if(a == (int)'z'){
             System.out.println('a');
+        } else {
+System.out.println((char)(a + 1));
         }
-        System.out.println((char)(a + 1));
         
-        
-
         
     }
 }
