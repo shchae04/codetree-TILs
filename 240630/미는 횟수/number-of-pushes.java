@@ -10,6 +10,11 @@ public class Main {
         int length = A.length();
 
         for (int n = 1; n <= length; n++) {
+            // abcdef
+            // defabc
+            //n=1 fabcde defabc
+            //n=2 efabcd defabc
+            //n=3 defabc defabc OK
             A = A.charAt(length - 1) + A.substring(0, length - 1);
 
             if (A.equals(B)) {
