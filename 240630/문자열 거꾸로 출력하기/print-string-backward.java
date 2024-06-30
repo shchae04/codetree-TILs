@@ -4,21 +4,22 @@ public class Main {
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
 
-        // 종료 조건 문자열
-        String temp = "END";
-        
-        for (int i = 0; i < 10; i++) {
+        // 최대 10회 반복합니다.
+        for(int i = 0; i < 10; i++) {
+            // 문자열을 입력받습니다.
             String str = sc.next();
-
-            if (str.equals(temp)) {
+            
+            // str이 END일 경우 종료합니다.
+            if(str.equals("END"))
                 break;
-            }
-
-            // 문자열을 뒤집어 출력합니다.
-            StringBuilder sb = new StringBuilder(str);
-            System.out.println(sb.reverse().toString());
+            
+            // 문자열의 길이를 구합니다.
+            int len = str.length();
+            
+            // 문자열을 역으로 출력합니다.
+            for(int j = len - 1; j >= 0; j--)
+                System.out.print(str.charAt(j));
+            System.out.println();
         }
-
-        
     }
 }
