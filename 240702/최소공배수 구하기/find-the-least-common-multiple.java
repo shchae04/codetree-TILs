@@ -15,8 +15,8 @@ public class Main {
     public static int gcd(int a, int b) {
         while (b != 0) {
             int temp = b;
-            b = a % b;
-            a = temp;
+            b = a % b; //6, 2, 0
+            a = temp; //temp = 2  a = 2
         }
         return a;
     }
