@@ -1,10 +1,6 @@
 import java.util.Scanner;
 public class Main {
 
-    public static void modify(int[] arr2) {  // arr2는 arr와 관련이 없다.
-        arr2[0] = 10;
-    }
-
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
 
@@ -15,16 +11,18 @@ public class Main {
             arr[i] = sc.nextInt();
         }
 
-        modify(arr.clone());           
+        modify(arr);           
 
+        for(int i=0; i<n; i++){
+            System.out.print(arr[i] + " ");
+        }
+    }
+
+    public static void modify(int[] arr){
         for(int i = 0; i < arr.length; i++){
             if(arr[i]%2 ==0){
                 arr[i] = arr[i] / 2;
             } 
-        }
-        
-        for(int i=0; i<n; i++){
-            System.out.print(arr[i] + " ");
         }
     }
 }
