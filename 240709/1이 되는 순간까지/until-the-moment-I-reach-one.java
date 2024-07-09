@@ -2,6 +2,7 @@ import java.util.Scanner;
 
 public class Main {
     public static int F(int n) {
+        //1 이라면 0회 반환 즉 1 + 1 + 1 + 1 + 1 + 0 으로 6이 반환
         if (n == 1) {
             return 0;
         }
