@@ -2,12 +2,20 @@ import java.util.Scanner;
 
 public class Main {
     public static int findMax(int[] arr, int n) {
-        // 기저 조건: 배열에 원소가 하나만 남았을 때
+
+// f() 함수가 반환하는 값이 무엇인지 정의를 먼저합니다.
+// f()함수 안에서 해당 정의를 만족하기위해 어떻게 f()를 불러야하는지 작성합니다.
+// 그 후에 종료조건을 적어줍니다
+
+//f(n) : 1~n까지 원소중 최대값을 반환하는 함수
+// f(n) = max(a[1], a[2], ..., a[n]) = max(f(n-1), a[n])
+// 종료조건: f(1) => a[1]
+
+        //원소가 한개
         if (n == 1) {
             return arr[0];
         }
         
-        // 나머지 원소들 중 최댓값을 재귀적으로 찾음
         int maxOfRest = findMax(arr, n - 1);
         
         // 현재 원소와 나머지 원소들의 최댓값을 비교
@@ -25,9 +33,7 @@ public class Main {
             arr[i] = scanner.nextInt();
         }
         
-        // 최댓값 찾기 및 출력
-        int result = findMax(arr, n);
-        System.out.println(result);
+        System.out.println(findMax(arr, n));
         
         scanner.close();
     }
