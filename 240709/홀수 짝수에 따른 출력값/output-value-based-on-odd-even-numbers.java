@@ -8,8 +8,11 @@ public class Main {
 
     public static int F(int n){
 
-        if(n <= 0){
-            return 0;
+        if(n == 1){
+            return 1;
+        }
+        if(n == 2){
+            return 2;
         }
         
         if(n % 2 ==0){ //짝수 1 ~ n 까지 짝수의 합
