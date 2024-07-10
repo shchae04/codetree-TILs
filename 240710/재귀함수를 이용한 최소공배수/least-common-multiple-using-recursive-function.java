@@ -1,40 +1,41 @@
 import java.util.Scanner;
+
 public class Main {
+    public static final int MAX_N = 10;
+    
+    public static int n;
+    public static int[] arr = new int[MAX_N + 1];
+    
+    // 두 수간의 최소공배수를 구하여 반환합니다.
+    public static int lcm(int a, int b) {
+        int gcd = 1;
+        for(int i = 1; i <= Math.min(a, b); i++) {
+            if(a % i == 0 && b % i == 0)
+                gcd = i;
+        }
+    
+        return a * b / gcd;
+    }
+    
+    // index번째 까지 인덱스의 숫자 중에 가장 큰 값을 반환합니다.
+    public static int getLCMAll(int index) {
+        // 남은 원소가 1개라면 그 자신이 답이 됩니다.
+        if(index == 1)
+            return arr[1];
+    
+        // 1번째 ~ index - 1번째 원소의 최소공배수를 구한 결과와
+        // 현재 index 원소의 최소공배수를 구하여 반환합니다.
+        return lcm(getLCMAll(index - 1), arr[index]);
+    }
+
     public static void main(String[] args) {
-        // 여기에 코드를 작성해주세요.
         Scanner sc = new Scanner(System.in);
-        int n = sc.nextInt();
-        int[] arr = new int[n];
-        for(int i=0; i<n; i++){
+        // 변수 선언 및 입력:
+        n = sc.nextInt();
+        for(int i = 1; i <= n; i++)
             arr[i] = sc.nextInt();
-        }
 
-        int result = F(arr,0); //idx 0부터 시작
-        System.out.println(result);
-
-    }
-
-    //배열과 idx 넘겨준다.
-    public static int F(int[] arr, int idx){
-        
-        //배열의 끝인 경우 마지막 값 리턴.
-        if(idx == arr.length-1){
-            return arr[idx];
-        }
-        return lcm(arr[idx], F(arr, idx + 1));
-    }
-
-
-    //최대 공약수
-    public static int gcd(int a, int b){
-        if(b == 0){
-            return a;
-        }
-        return gcd(b, a%b); // b -> a | a%b 나머지
-    }
-
-    //최소 공배수
-    public static int lcm(int a, int b){
-        return (a * b) / gcd(a,b);
+        // 모든 수의 최소공배수를 구합니다.
+        System.out.print(getLCMAll(n));
     }
 }
