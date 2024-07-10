@@ -3,8 +3,7 @@ import java.util.Scanner;
 public class Main {
     public static int sumOfDigits(int num) {
         if (num == 0) return 0;
-        //마지막 자릿수 + 10으로 나눈 몫으로 다시 계산 
-        return (num % 10) + sumOfDigits(num / 10);
+        return (n%10) + sumOfDigits(num / 10);
     }
 
     public static void main(String[] args) {
