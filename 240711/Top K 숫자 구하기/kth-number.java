@@ -19,8 +19,8 @@ public class Main {
             nums[i] = sc.nextInt();
         }
 
-        // nums[0]부터 nums[n - 1]까지를 정렬함
-        Arrays.sort(nums, 0, n);
+        //범위 지정
+        Arrays.sort(nums,0, n);
 
         // k번째 원소를 출력 (원소 k-1)
         System.out.print(nums[k - 1]);
