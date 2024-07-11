@@ -1,5 +1,7 @@
 import java.util.Scanner;
 import java.util.Arrays;
+//추가
+import java.util.Collections;
 
 public class Main {
     public static void main(String[] args) {
@@ -16,6 +18,9 @@ public class Main {
         Arrays.sort(arr);
         printAsc(arr);
         printDesc(arr);
+
+        // Integer[] nums2 = Arrays.stream(arr).boxed().toArray(Integer[]::new);
+        // Arrays.sort(nums2, Collections.reverseOrder());
     }
 
     //ASC 출력
@@ -34,4 +39,6 @@ public class Main {
         }
         System.out.println();
     }
+
+    
 }
