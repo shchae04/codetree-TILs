@@ -32,16 +32,12 @@ public class Main {
         
         boolean flag = false;
         for(int i=0; i<A.length; i++){
-            if(A[i] == B[i]){
-                flag = true;
-            } else {
-                flag = false;
+            if(A[i] != B[i]){
+                System.out.println("No");
+                return;
             }
         }
-        if(flag){
             System.out.println("Yes");
-        } else {
-            System.out.println("No");
-        }
+        
     }
 }
