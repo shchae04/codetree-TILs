@@ -1,4 +1,5 @@
 import java.util.Scanner;
+import java.util.Arrays;
 
 public class Main {
     public static void main(String[] args) {
@@ -6,27 +7,18 @@ public class Main {
         String str1 = sc.next();
         String str2 = sc.next();
 
-        // 각 문자의 출현 빈도를 저장할 배열
-        int[] freq1 = new int[128]; // ASCII 문자를 고려
-        int[] freq2 = new int[128];
+        // 각 문자열을 정렬합니다.
+        char[] chars1 = str1.toCharArray();
+        Arrays.sort(chars1);
+        String sortedStr1 = new String(chars1);
 
-        // 각 문자열의 문자 빈도 계산
-        for (char c : str1.toCharArray()) {
-            freq1[c]++;
-        }
-        for (char c : str2.toCharArray()) {
-            freq2[c]++;
-        }
+        char[] chars2 = str2.toCharArray();
+        Arrays.sort(chars2);
+        String sortedStr2 = new String(chars2); 
 
-        // 빈도 비교
-        boolean canForm = true;
-        for (int i = 0; i < 128; i++) {
-            if (freq1[i] != freq2[i]) {
-                canForm = false;
-                break;
-            }
-        }
-
-        System.out.println(canForm ? "Yes" : "No");
+        if(sortedStr1.equals(sortedStr2))
+            System.out.print("Yes");
+        else
+            System.out.print("No");
     }
 }
