@@ -1,25 +1,27 @@
-import java.util.*;
-
+import java.util.Scanner;
+import java.util.Arrays;
 public class Main {
     public static void main(String[] args) {
+        // 여기에 코드를 작성해주세요.
         Scanner sc = new Scanner(System.in);
-        int N = sc.nextInt();
-        Integer[] numbers = new Integer[2*N];
-        
-        for (int i = 0; i < 2*N; i++) {
-            numbers[i] = sc.nextInt();
+        int n = sc.nextInt();
+
+        int[] nums = new int[2 * n];
+
+        for(int i = 0; i < 2 * n; i++)
+            nums[i] = sc.nextInt();
+
+        Arrays.sort(nums);
+
+        int gMax = 0;
+        for(int i=0; i<n; i++){
+            int gSum = nums[i] + nums[2*n -1 -i];
+            if(gSum > gMax){
+                gMax = gSum;
+            }
+
         }
-        
-        // 내림차순 정렬
-        Arrays.sort(numbers, Collections.reverseOrder());
-        
-        int maxSum = numbers[0] + numbers[2*N-1];
-        
-        for (int i = 0; i < N; i++) {
-            int sum = numbers[i] + numbers[2*N-1-i];
-            maxSum = Math.max(maxSum, sum);
-        }
-        
-        System.out.println(maxSum);
+
+        System.out.println(gMax);
     }
 }
