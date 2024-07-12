@@ -15,6 +15,8 @@ public class Main {
 
         int gMax = 0;
         for(int i=0; i<n; i++){
+            //정렬 후
+            //맨 앞 + 맨 뒤
             int gSum = nums[i] + nums[2*n -1 -i];
             if(gSum > gMax){
                 gMax = gSum;
