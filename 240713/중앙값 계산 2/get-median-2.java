@@ -15,7 +15,7 @@ public class Main {
 
         for(int i=0; i<n; i++){
             if(i % 2==0){
-                Arrays.sort(arr);
+                Arrays.sort(arr,0, i+1); //입력받은 요소 까지만 정렬
                 System.out.print(arr[i/2] + " ");
             }
         }
