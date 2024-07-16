@@ -12,10 +12,14 @@ public class Main {
         int[] daysInMonth = {0, 31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31};
         int totalDays = 0;
         
+
+        //month 같은 경우
         if (m1 == m2) {
             totalDays = d2 - d1 + 1;
+        //다른 경우
         } else {
             totalDays += daysInMonth[m1] - d1 + 1;
+            //날짜 더하기
             for (int m = m1 + 1; m < m2; m++) {
                 totalDays += daysInMonth[m];
             }
