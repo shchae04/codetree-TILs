@@ -10,17 +10,13 @@ public class Main {
         int b = scanner.nextInt();
         int c = scanner.nextInt();
         
-        LocalDateTime start = LocalDateTime.of(2011, 11, 11, 11, 11);
-        LocalDateTime end = LocalDateTime.of(2011, 11, a, b, c);
-        
-        if (end.isBefore(start)) {
-            System.out.println(-1);
+        int diff = (a * 24 * 60 + b * 60 + c) - (11 * 24 * 60 + 11 * 60  + 11);
+
+        if(diff <0){
+            System.out.print(-1);
         } else {
-            Duration duration = Duration.between(start, end);
-            long minutes = duration.toMinutes();
-            System.out.println(minutes);
+            System.out.print(diff);
         }
         
-        scanner.close();
     }
 }
