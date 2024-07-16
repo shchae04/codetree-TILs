@@ -17,7 +17,12 @@ public class Main {
         int[] daysInMonth = {31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31};
         String[] daysOfWeek = {"Mon", "Tue", "Wed", "Thu", "Fri", "Sat", "Sun"};
 
-        int totalDays = -1; // Start from -1 because we want to include the start date
+        // If the dates are the same, return Monday
+        if (m1 == m2 && d1 == d2) {
+            return "Mon";
+        }
+
+        int totalDays = 0;
 
         // Calculate days between m1/d1 and m2/d2
         if (m1 <= m2) {
