@@ -17,24 +17,23 @@ public class Main {
         int[] daysInMonth = {31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31};
         String[] daysOfWeek = {"Mon", "Tue", "Wed", "Thu", "Fri", "Sat", "Sun"};
 
-        int totalDays = 0;
+        int totalDays = -1; // Start from -1 because we want to include the start date
 
-        if (m1 < m2) {
-            totalDays += daysInMonth[m1 - 1] - d1 + 1;
-            for (int m = m1 + 1; m < m2; m++) {
+        // Calculate days between m1/d1 and m2/d2
+        if (m1 <= m2) {
+            for (int m = m1; m < m2; m++) {
                 totalDays += daysInMonth[m - 1];
             }
-            totalDays += d2 - 1;
-        } else if (m1 > m2) {
-            for (int m = m1 + 1; m <= 12; m++) {
+            totalDays += d2 - d1;
+        } else {
+            for (int m = m1; m <= 12; m++) {
                 totalDays += daysInMonth[m - 1];
             }
             for (int m = 1; m < m2; m++) {
                 totalDays += daysInMonth[m - 1];
             }
-            totalDays += daysInMonth[m1 - 1] - d1 + 1 + d2 - 1;
-        } else {
-            totalDays = d2 - d1;
+            totalDays += d2;
+            totalDays -= d1;
         }
 
         int dayIndex = totalDays % 7;
