@@ -2,50 +2,48 @@ import java.util.Scanner;
 
 public class Main {
     public static void main(String[] args) {
-        Scanner scanner = new Scanner(System.in);
-        int m1 = scanner.nextInt();
-        int d1 = scanner.nextInt();
-        int m2 = scanner.nextInt();
-        int d2 = scanner.nextInt();
-        scanner.close();
+        Scanner sc = new Scanner(System.in);
 
-        String result = calculateDayOfWeek(m1, d1, m2, d2);
-        System.out.println(result);
-    }
-
-    public static String calculateDayOfWeek(int m1, int d1, int m2, int d2) {
-        int[] daysInMonth = {31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31};
-        String[] daysOfWeek = {"Mon", "Tue", "Wed", "Thu", "Fri", "Sat", "Sun"};
-
-        // If the dates are the same, return Monday
-        if (m1 == m2 && d1 == d2) {
-            return "Mon";
+        // 입력 받기
+        int m1 = sc.nextInt();
+        int d1 = sc.nextInt();
+        int m2 = sc.nextInt();
+        int d2 = sc.nextInt();
+        sc.close();
+        
+        // 2011년 각 월의 일수를 배열로 저장
+        int[] daysInMonth = {0, 31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31};
+        
+        // 첫 번째 날짜로부터 총 일수 계산
+        int days1 = 0;
+        for (int i = 1; i < m1; i++) {
+            days1 += daysInMonth[i];
         }
+        days1 += d1;
 
-        int totalDays = 0;
-
-        // Calculate days between m1/d1 and m2/d2
-        if (m1 <= m2) {
-            for (int m = m1; m < m2; m++) {
-                totalDays += daysInMonth[m - 1];
-            }
-            totalDays += d2 - d1;
-        } else {
-            for (int m = m1; m <= 12; m++) {
-                totalDays += daysInMonth[m - 1];
-            }
-            for (int m = 1; m < m2; m++) {
-                totalDays += daysInMonth[m - 1];
-            }
-            totalDays += d2;
-            totalDays -= d1;
+        // 두 번째 날짜로부터 총 일수 계산
+        int days2 = 0;
+        for (int i = 1; i < m2; i++) {
+            days2 += daysInMonth[i];
         }
-
-        int dayIndex = totalDays % 7;
-        if (dayIndex < 0) {
-            dayIndex += 7;
+        days2 += d2;
+        
+        // 두 날짜 사이의 일수 차이 계산
+        int difference = days2 - days1;
+        
+        // 첫 번째 날짜의 요일 (0: Mon, 1: Tue, ..., 6: Sun)
+        int dayOfWeek = 0;  // 2011년 1월 1일이 월요일이므로 0으로 설정
+        
+        // 두 번째 날짜의 요일 계산
+        int resultDayOfWeek = (dayOfWeek + difference) % 7;
+        if (resultDayOfWeek < 0) {
+            resultDayOfWeek += 7;
         }
-
-        return daysOfWeek[dayIndex];
+        
+        // 요일 배열
+        String[] days = {"Mon", "Tue", "Wed", "Thu", "Fri", "Sat", "Sun"};
+        
+        // 결과 출력
+        System.out.println(days[resultDayOfWeek]);
     }
 }
