@@ -1,4 +1,3 @@
-import java.time.LocalDate;
 import java.util.Scanner;
 
 public class Main {
@@ -23,18 +22,15 @@ public class Main {
             }
         }
 
-        LocalDate startDate = LocalDate.of(2024, m1, d1);
-        LocalDate endDate = LocalDate.of(2024, m2, d2);
+        int[] daysInMonth = {31, 29, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31}; // 2024년은 윤년
         
-        int count = 0;
-
-        while (!startDate.isAfter(endDate)) {
-            int dayOfWeek = startDate.getDayOfWeek().getValue() - 1; // 월요일을 0으로 맞추기
-            if (dayOfWeek == targetDayIndex) {
-                count++;
-            }
-            startDate = startDate.plusDays(1);
+        int totalDays = 0;
+        for (int m = m1; m < m2; m++) {
+            totalDays += daysInMonth[m - 1];
         }
+        totalDays += d2 - d1;
+
+        int count = (totalDays / 7) + ((totalDays % 7 >= targetDayIndex) ? 1 : 0);
         
         System.out.println(count);
     }
