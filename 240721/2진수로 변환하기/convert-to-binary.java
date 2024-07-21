@@ -1,23 +1,24 @@
 import java.util.Scanner;
+import java.util.ArrayList;
+
 public class Main {
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
         int n = sc.nextInt();
-        int[] digits = new int[n];
-        int cnt = 0;
+        ArrayList<Integer> digits = new ArrayList<>();
 
-        while (true) {
-            if(n < 2) {
-                digits[cnt++] = n;
-                break;
+        if (n == 0) {
+            digits.add(0);
+        } else {
+            while (n > 0) {
+                digits.add(n % 2);
+                n /= 2;
             }
-        
-            digits[cnt++] = n % 2;
-            n /= 2;
         }
         
         // print binary number
-        for(int i = cnt - 1; i >= 0; i--)
-            System.out.print(digits[i]);
+        for (int i = digits.size() - 1; i >= 0; i--) {
+            System.out.print(digits.get(i));
+        }
     }
 }
