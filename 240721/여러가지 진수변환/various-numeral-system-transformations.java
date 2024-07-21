@@ -1,19 +1,32 @@
 import java.util.Scanner;
 
 public class Main {
+    public static final int MAX_DIGIT = 20;
+    
+    public static int n, b;
+    public static int[] digits = new int[MAX_DIGIT];
+    public static int cnt;
+
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
-        int N = sc.nextInt();
-        int B = sc.nextInt();
+        // 입력
+        n = sc.nextInt();
+        b = sc.nextInt();
         
-        StringBuilder result = new StringBuilder();
-        
-        while (N > 0) {
-            int remainder = N % B;
-            result.insert(0, remainder);  // 나머지를 결과의 맨 앞에 추가
-            N /= B;
+        // b진수로 변환합니다.
+        while(true) {
+            if(n < b) {
+                digits[cnt++] = n;
+                break;
+            }
+            
+            digits[cnt++] = n % b;
+            n /= b;
         }
         
-        System.out.println(result.toString());
+        // 진수 배열을 뒤집어 b진수를 출력합니다.
+        for(int i = cnt - 1; i >= 0; i--)
+            System.out.print(digits[i]);
+        
     }
 }
