@@ -1,20 +1,38 @@
 import java.util.Scanner;
 
 public class Main {
+    public static final int MAX_DIGIT = 20;
+
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
-        String binaryString = sc.nextLine();
+        // 변수 선언 및 입력
+        String binary = sc.next();
         
-        // 이진수를 10진수로 변환
-        int decimalValue = Integer.parseInt(binaryString, 2);
+        // 십진수로 변환합니다.
+        int num = 0;
+        for(int i = 0; i < (int) binary.length(); i++)
+            num = num * 2 + (binary.charAt(i) - '0');
         
-        // 17배하기
-        int multipliedValue = decimalValue * 17;
+        // 십진수에 17을 곱합니다.
+        num *= 17;
         
-        // 10진수를 다시 이진수로 변환
-        String resultBinaryString = Integer.toBinaryString(multipliedValue);
+        // 이진수로 변환합니다.
+        int[] digits = new int[MAX_DIGIT];
+        int cnt = 0;
         
-        // 결과 출력
-        System.out.println(resultBinaryString);
+        while(true) {
+            if(num < 2) {
+                digits[cnt++] = num;
+                break;
+            }
+            
+            digits[cnt++] = num % 2;
+            num /= 2;
+        }
+        
+        // 배열의 순서를 뒤집어 이진수를 출력합니다.
+        for(int i = cnt - 1; i >= 0; i--)
+            System.out.print(digits[i]);
+
     }
 }
