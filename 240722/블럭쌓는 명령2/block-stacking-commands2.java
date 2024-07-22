@@ -16,7 +16,6 @@ public class Main {
             int A = scanner.nextInt();
             int B = scanner.nextInt();
             
-            // A부터 B까지 각 칸에 블록 추가
             for (int j = A; j <= B; j++) {
                 blocks[j]++;
             }
@@ -25,7 +24,9 @@ public class Main {
         // 최댓값 찾기
         int maxBlocks = 0;
         for (int i = 1; i <= N; i++) {
-            maxBlocks = Math.max(maxBlocks, blocks[i]);
+            if(blocks[i] > maxBlocks){
+                maxBlocks = blocks[i];
+            }
         }
         
         // 결과 출력
