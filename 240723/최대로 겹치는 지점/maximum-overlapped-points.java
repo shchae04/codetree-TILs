@@ -5,6 +5,8 @@ public class Main {
         Scanner sc = new Scanner(System.in);
 
         int n = sc.nextInt();
+
+        //겹치는 부분 배열 선언
         int[] arr = new int[101];  // 1부터 100까지의 범위를 커버
 
         for (int i = 0; i < n; i++) {
