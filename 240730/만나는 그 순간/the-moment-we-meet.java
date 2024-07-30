@@ -1,66 +1,61 @@
-import java.util.*;
-
+import java.util.Scanner;
 public class Main {
+
+    public static int n,m;
+    public static int[] posA = new int[1000001];
+    public static int[] posB = new int[1000001];
+
+
     public static void main(String[] args) {
-        Scanner scanner = new Scanner(System.in);
-        
-        int N = scanner.nextInt();
-        int M = scanner.nextInt();
-        
-        // 이동 내역 저장
-        List<Move> movesA = new ArrayList<>();
-        List<Move> movesB = new ArrayList<>();
-        
-        for (int i = 0; i < N; i++) {
-            char direction = scanner.next().charAt(0);
-            int time = scanner.nextInt();
-            movesA.add(new Move(direction, time));
+        // 여기에 코드를 작성해주세요.
+        Scanner sc = new Scanner(System.in);
+        n = sc.nextInt();
+        m = sc.nextInt();
+
+        //A의 위치 기록
+        int timeA = 1;
+        for(int i=0; i<n; i++){
+            char d = sc.next().charAt(0);
+            int t = sc.nextInt();
+
+            while(t--> 0){
+                if(d == 'R'){
+                    posA[timeA] = posA[timeA - 1] + 1;
+                } else {
+                    posA[timeA] = posA[timeA -1] - 1;
+                }
+
+                timeA++;
+            }
         }
-        
-        for (int i = 0; i < M; i++) {
-            char direction = scanner.next().charAt(0);
-            int time = scanner.nextInt();
-            movesB.add(new Move(direction, time));
+
+        //B의 위치 기록
+        int timeB = 1;
+        for(int i=0; i<m; i++){
+            char d = sc.next().charAt(0);
+            int t = sc.nextInt();
+
+            while(t--> 0){
+                if(d == 'R'){
+                    posB[timeB] = posB[timeB - 1] + 1;
+                } else {
+                    posB[timeB] = posB[timeB -1] - 1;
+                }
+
+                timeB++;
+            }
         }
-        
-        // 현재 위치 계산
-        List<Integer> positionsA = calculatePositions(movesA);
-        List<Integer> positionsB = calculatePositions(movesB);
-        
-        // 첫 만남 시간 계산
-        int meetingTime = -1;
-        for (int t = 0; t < positionsA.size(); t++) {
-            if (positionsA.get(t).equals(positionsB.get(t))) {
-                meetingTime = t + 1;
+
+        //최초 시간
+        int meet = -1;
+        for(int i=1; i<timeA; i++){
+            if(posA[i] == posB[i]){
+                meet = i;
                 break;
             }
         }
-        
-        // 결과 출력
-        System.out.println(meetingTime);
-    }
-    
-    private static List<Integer> calculatePositions(List<Move> moves) {
-        List<Integer> positions = new ArrayList<>();
-        int position = 0;
-        
-        for (Move move : moves) {
-            for (int i = 0; i < move.time; i++) {
-                position += (move.direction == 'R') ? 1 : -1;
-                positions.add(position);
-            }
-        }
-        
-        return positions;
-    }
-}
 
-class Move {
-    char direction;
-    int time;
-    
-    Move(char direction, int time) {
-        this.direction = direction;
-        this.time = time;
+        System.out.println(meet);
+
     }
 }
