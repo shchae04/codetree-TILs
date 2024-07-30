@@ -1,59 +1,66 @@
-import java.util.Scanner;
+import java.util.*;
 
 public class Main {
     public static void main(String[] args) {
-        Scanner sc = new Scanner(System.in);
-        int N = sc.nextInt();
-        int M = sc.nextInt();
-
-        // A와 B의 위치를 저장할 배열
-        int[] posA = new int[100001];  // 최대 이동 시간을 고려한 배열 크기
-        int[] posB = new int[100001];
-
-        int time = 0;
-        int positionA = 0;
-        int positionB = 0;
-
-        // A의 움직임 처리
+        Scanner scanner = new Scanner(System.in);
+        
+        int N = scanner.nextInt();
+        int M = scanner.nextInt();
+        
+        // 이동 내역 저장
+        List<Move> movesA = new ArrayList<>();
+        List<Move> movesB = new ArrayList<>();
+        
         for (int i = 0; i < N; i++) {
-            String direction = sc.next();
-            int duration = sc.nextInt();
-            
-            int move = direction.equals("R") ? 1 : -1;
-            
-            for (int j = 0; j < duration; j++) {
-                positionA += move;
-                posA[time + j + 1] = positionA;
-            }
-            
-            time += duration;
+            char direction = scanner.next().charAt(0);
+            int time = scanner.nextInt();
+            movesA.add(new Move(direction, time));
         }
-
-        // B의 움직임 처리
-        time = 0;
+        
         for (int i = 0; i < M; i++) {
-            String direction = sc.next();
-            int duration = sc.nextInt();
-            
-            int move = direction.equals("R") ? 1 : -1;
-            
-            for (int j = 0; j < duration; j++) {
-                positionB += move;
-                posB[time + j + 1] = positionB;
-            }
-            
-            time += duration;
+            char direction = scanner.next().charAt(0);
+            int time = scanner.nextInt();
+            movesB.add(new Move(direction, time));
         }
-
-        // 만나는 시간 찾기
-        for (int i = 1; i <= time; i++) {
-            if (posA[i] == posB[i]) {
-                System.out.println(i);
-                return;
+        
+        // 현재 위치 계산
+        List<Integer> positionsA = calculatePositions(movesA);
+        List<Integer> positionsB = calculatePositions(movesB);
+        
+        // 첫 만남 시간 계산
+        int meetingTime = -1;
+        for (int t = 0; t < positionsA.size(); t++) {
+            if (positionsA.get(t).equals(positionsB.get(t))) {
+                meetingTime = t + 1;
+                break;
             }
         }
+        
+        // 결과 출력
+        System.out.println(meetingTime);
+    }
+    
+    private static List<Integer> calculatePositions(List<Move> moves) {
+        List<Integer> positions = new ArrayList<>();
+        int position = 0;
+        
+        for (Move move : moves) {
+            for (int i = 0; i < move.time; i++) {
+                position += (move.direction == 'R') ? 1 : -1;
+                positions.add(position);
+            }
+        }
+        
+        return positions;
+    }
+}
 
-        // 만나지 않는 경우
-        System.out.println(-1);
+class Move {
+    char direction;
+    int time;
+    
+    Move(char direction, int time) {
+        this.direction = direction;
+        this.time = time;
     }
 }
