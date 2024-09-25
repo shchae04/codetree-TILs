@@ -1,51 +1,47 @@
 import java.util.Scanner;
 
 public class Main {
-    // 인접한 상하좌우 칸을 나타내는 배열
-    static int[] dx = {-1, 1, 0, 0}; // 상, 하, 좌, 우
-    static int[] dy = {0, 0, -1, 1};
+    public static final int MAX_N = 100;
+    public static final int DIR_NUM = 4;
+
+    public static int n;
+    public static int[][] arr = new int[MAX_N][MAX_N];
+    
+    public static int[] dx = new int[]{0, 1,  0, -1};
+    public static int[] dy = new int[]{1, 0, -1,  0};
+
+    public static boolean inRange(int x, int y) {
+        return 0 <= x && x < n && 0 <= y && y < n;
+    }
+
+    public static int adjacentCnt(int x, int y) {
+        int cnt = 0;
+        for(int i = 0; i < DIR_NUM; i++) {
+            int nx = x + dx[i], ny = y + dy[i];
+            if(inRange(nx, ny) && arr[nx][ny] == 1)
+                cnt++;
+        }
+        
+        return cnt;
+    }
 
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
-        
-        int n = sc.nextInt(); // 격자의 크기
-        int[][] grid = new int[n][n];
-        
-        // 격자 상태 입력 받기
-        for (int i = 0; i < n; i++) {
-            for (int j = 0; j < n; j++) {
-                grid[i][j] = sc.nextInt();
-            }
-        }
-        
-        int count = 0;
-        
-        // 각 칸에 대해 상하좌우 인접한 칸을 확인
-        for (int i = 0; i < n; i++) {
-            for (int j = 0; j < n; j++) {
-                int adjacentOnes = 0; // 인접한 칸에서 1의 개수
 
-                // 상하좌우 인접한 칸을 체크
-                for (int k = 0; k < 4; k++) {
-                    int ni = i + dx[k];
-                    int nj = j + dy[k];
+        // 입력
+        n = sc.nextInt();
 
-                    // 격자 범위를 벗어나지 않으면 체크
-                    if (ni >= 0 && ni < n && nj >= 0 && nj < n) {
-                        if (grid[ni][nj] == 1) {
-                            adjacentOnes++;
-                        }
-                    }
-                }
-
-                // 인접한 칸에 1이 3개 이상이면 카운트 증가
-                if (adjacentOnes >= 3) {
-                    count++;
-                }
-            }
-        }
+        for(int i = 0; i < n; i++)
+            for(int j = 0; j < n; j++)
+                arr[i][j] = sc.nextInt();
         
-        // 결과 출력
-        System.out.println(count);
+        // 각 칸을 탐색합니다.
+        int ans = 0;
+        for(int i = 0; i < n; i++)
+            for(int j = 0; j < n; j++)
+                if(adjacentCnt(i, j) >= 3)
+                    ans++;
+        
+        System.out.println(ans);
     }
 }
