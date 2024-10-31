@@ -20,22 +20,18 @@ public class Main {
         // 중앙에 첫 숫자 설정
         matrix[x][y] = num++;
 
-        // 반복하여 숫자를 채워나감
-        for (int i = 1; i < n * n; i++) {
-            // 다음 위치
-            int newX = x + dr[direction];
-            int newY = y + dc[direction];
-
-            // 범위를 벗어나지 않고 빈칸이라면 해당 위치에 숫자를 채움
-            if (newX >= 0 && newX < n && newY >= 0 && newY < n && matrix[newX][newY] == 0) {
-                x = newX;
-                y = newY;
-                matrix[x][y] = num++;
-            } else {
-                // 빈칸이 아닐 경우 방향을 바꿈
-                direction = (direction + 1) % 4;
-                i--; // 다시 시도하도록 인덱스 유지
+        // 나선형으로 채워나가는 과정
+        int step = 1;  // 각 방향으로 움직일 횟수
+        while (num <= n * n) {
+            for (int i = 0; i < 2; i++) {  // 각 방향으로 두 번씩 반복 (동쪽->북쪽, 서쪽->남쪽)
+                for (int j = 0; j < step; j++) {  // step만큼 이동
+                    x += dr[direction];
+                    y += dc[direction];
+                    matrix[x][y] = num++;
+                }
+                direction = (direction + 1) % 4;  // 방향 변경
             }
+            step++;  // 한 사이클이 끝날 때마다 step 증가
         }
 
         // 출력
