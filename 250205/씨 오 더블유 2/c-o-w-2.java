@@ -16,7 +16,7 @@ public class Main {
             if(ch == 'C'){
                 countC++;
             } else if(ch == 'O'){
-                countCO++;
+                countCO += countC;
             } else if(ch == 'W'){
                 countCOW += countCO;
             }
