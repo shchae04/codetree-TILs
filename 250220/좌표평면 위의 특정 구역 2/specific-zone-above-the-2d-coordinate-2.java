@@ -18,49 +18,32 @@ public class Main {
     public static int getMinimumRectangleArea(int N, int[][] points) {
         if (N <= 3) return 0; // 최소 3개의 점만 남을 수 있으므로 넓이는 0
 
-        // x축, y축 정렬된 리스트 생성
-        List<Integer> xList = new ArrayList<>();
-        List<Integer> yList = new ArrayList<>();
-        for (int i = 0; i < N; i++) {
-            xList.add(points[i][0]);
-            yList.add(points[i][1]);
-        }
+        // x, y 좌표 기준 정렬한 리스트 생성
+        List<int[]> sortedByX = new ArrayList<>(Arrays.asList(points));
+        List<int[]> sortedByY = new ArrayList<>(Arrays.asList(points));
 
-        Collections.sort(xList);
-        Collections.sort(yList);
+        sortedByX.sort(Comparator.comparingInt(p -> p[0])); // x 기준 정렬
+        sortedByY.sort(Comparator.comparingInt(p -> p[1])); // y 기준 정렬
 
-        // 전체 점들을 포함하는 직사각형의 최소 및 최대 좌표
-        int minX = xList.get(0);
-        int maxX = xList.get(N - 1);
-        int minY = yList.get(0);
-        int maxY = yList.get(N - 1);
+        // 전체 직사각형의 경계값
+        int minX = sortedByX.get(0)[0];
+        int maxX = sortedByX.get(N - 1)[0];
+        int minY = sortedByY.get(0)[1];
+        int maxY = sortedByY.get(N - 1)[1];
 
         int minArea = (maxX - minX) * (maxY - minY);
 
-        // 각 점을 하나씩 제거하면서 최소 직사각형 넓이 계산
+        // 경계에 위치한 점들을 하나씩 제거하며 최소 넓이 계산
         for (int i = 0; i < N; i++) {
             int removedX = points[i][0];
             int removedY = points[i][1];
 
-            // 남은 점들의 x, y 값만 추출
-            List<Integer> newXList = new ArrayList<>();
-            List<Integer> newYList = new ArrayList<>();
-            for (int j = 0; j < N; j++) {
-                if (j != i) {
-                    newXList.add(points[j][0]);
-                    newYList.add(points[j][1]);
-                }
-            }
+            // 새로운 min/max 값 구하기
+            int newMinX = (removedX == minX) ? sortedByX.get(1)[0] : minX;
+            int newMaxX = (removedX == maxX) ? sortedByX.get(N - 2)[0] : maxX;
+            int newMinY = (removedY == minY) ? sortedByY.get(1)[1] : minY;
+            int newMaxY = (removedY == maxY) ? sortedByY.get(N - 2)[1] : maxY;
 
-            // 새로운 최소, 최대 x, y 값 찾기
-            Collections.sort(newXList);
-            Collections.sort(newYList);
-            int newMinX = newXList.get(0);
-            int newMaxX = newXList.get(newXList.size() - 1);
-            int newMinY = newYList.get(0);
-            int newMaxY = newYList.get(newYList.size() - 1);
-
-            // 새로운 직사각형 넓이 계산
             int area = (newMaxX - newMinX) * (newMaxY - newMinY);
             minArea = Math.min(minArea, area);
         }
